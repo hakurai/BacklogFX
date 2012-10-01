@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<BorderPane id="BorderPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns:fx="http://javafx.com/fxml" fx:controller="backlogfx.kanban.KanbanColumnController">
+  <center>
+    <TilePane fx:id="body" prefHeight="200.0" prefWidth="200.0" />
+  </center>
+  <top>
+    <Label fx:id="columnName" alignment="CENTER" maxWidth="1.7976931348623157E308" text="Label">
+      <BorderPane.margin>
+        <Insets bottom="5.0" top="5.0" />
+      </BorderPane.margin>
+    </Label>
+  </top>
+</BorderPane>

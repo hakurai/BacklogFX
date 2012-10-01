@@ -1,0 +1,12 @@
+.idea/
+.gradle/
+out/
+build/
+target/
+.DS_Store
+*.bak
+user.properties
+BacklogFX.iml
+dist/
+nbproject/private/
+nbproject/genfiles.properties

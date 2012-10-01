@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<BorderPane id="BorderPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns:fx="http://javafx.com/fxml" fx:controller="backlogfx.kanban.KanbanController">
+  <center>
+    <ScrollPane fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vbarPolicy="ALWAYS">
+      <content>
+        <HBox>
+          <children>
+            <fx:include fx:id="todoColumn" source="KanbanColumn.fxml" HBox.hgrow="ALWAYS" />
+            <fx:include fx:id="inProgressColumn" source="KanbanColumn.fxml" HBox.hgrow="ALWAYS" />
+            <fx:include fx:id="resolvedColumn" source="KanbanColumn.fxml" HBox.hgrow="ALWAYS" />
+            <fx:include fx:id="closedColumn" source="KanbanColumn.fxml" HBox.hgrow="ALWAYS" />
+          </children>
+        </HBox>
+      </content>
+    </ScrollPane>
+  </center>
+  <top>
+    <ToolBar>
+      <items>
+        <Button mnemonicParsing="false" onAction="#loadIssue" text="Button" />
+      </items>
+    </ToolBar>
+  </top>
+</BorderPane>
