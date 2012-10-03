@@ -9,14 +9,13 @@ import backlog4j.User;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author eguchi
  */
 public class BacklogFxContext {
 
-    private final ExecutorService threadPool = Executors.newFixedThreadPool(5);
+    private final ExecutorService threadPool = Executors.newFixedThreadPool(3);
     private BacklogClient client;
     private User user;
 
@@ -43,13 +42,4 @@ public class BacklogFxContext {
         return threadPool;
     }
 
-
-    public void destroy() {
-        threadPool.shutdown();
-        try {
-            threadPool.awaitTermination(1000, TimeUnit.MILLISECONDS);
-        } catch (InterruptedException e) {
-            threadPool.shutdownNow();
-        }
-    }
 }

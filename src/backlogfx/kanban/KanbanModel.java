@@ -8,6 +8,8 @@ import backlog4j.Issue;
 import backlog4j.Status;
 import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.beans.property.ReadOnlyDoubleProperty;
+import javafx.beans.property.ReadOnlyObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.WorkerStateEvent;
@@ -26,7 +28,14 @@ public class KanbanModel {
     private ObservableList<Issue> resolvedIssues = FXCollections.observableArrayList();
     private ObservableList<Issue> closedIssues = FXCollections.observableArrayList();
 
+    private ReadOnlyObjectProperty<Issue> selectedIssue = new SimpleObjectProperty<>();
+
     public KanbanModel() {
+        todoIssues.clear();
+        inProgressIssues.clear();
+        resolvedIssues.clear();
+        closedIssues.clear();
+
         getIssueService.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
             @Override
             public void handle(WorkerStateEvent workerStateEvent) {

@@ -59,7 +59,6 @@ public class KanbanController implements Initializable {
         inProgressColumn.getStyleClass().add("inProgressColumn");
         resolvedColumn.getStyleClass().add("resolvedColumn");
         closedColumn.getStyleClass().add("closedColumn");
-
     }
 
     public void setModel(KanbanModel model) {
