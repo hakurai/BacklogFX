@@ -5,18 +5,18 @@
 package backlogfx;
 
 import backlog4j.BacklogClient;
-import backlog4j.BacklogClientFactory;
 import backlog4j.User;
-import backlog4j.conf.BacklogConfigure;
-import backlog4j.conf.BacklogConfigureBuilder;
-import java.io.IOException;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
- *
  * @author eguchi
  */
 public class BacklogFxContext {
 
+    private final ExecutorService threadPool = Executors.newFixedThreadPool(5);
     private BacklogClient client;
     private User user;
 
@@ -37,5 +37,19 @@ public class BacklogFxContext {
 
     public synchronized void setUser(User user) {
         this.user = user;
+    }
+
+    public ExecutorService getThreadPool() {
+        return threadPool;
+    }
+
+
+    public void destroy() {
+        threadPool.shutdown();
+        try {
+            threadPool.awaitTermination(1000, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException e) {
+            threadPool.shutdownNow();
+        }
     }
 }

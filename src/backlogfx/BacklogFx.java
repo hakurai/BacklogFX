@@ -36,9 +36,11 @@ public class BacklogFx extends Application {
      */
     public static void main(String[] args) {
 
-
-
-
         launch(args);
+    }
+
+    @Override
+    public void stop() throws Exception {
+        System.exit(0);
     }
 }

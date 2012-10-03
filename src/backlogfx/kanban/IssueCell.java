@@ -9,7 +9,7 @@ import javafx.scene.layout.VBox;
 /**
  * @author eguchi
  */
-public class IssueCell extends BorderPane{
+public class IssueCell extends BorderPane {
 
     private Label summary;
 
@@ -22,9 +22,10 @@ public class IssueCell extends BorderPane{
 
         setCenter(summary);
 
-        VBox.setMargin(this,new Insets(3));
-        setPadding(new Insets(5));
-        
+        BorderPane.setMargin(summary, new Insets(5));
+
+        VBox.setMargin(this, new Insets(3));
+
         getStyleClass().add("issueCell");
     }
 

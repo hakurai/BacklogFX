@@ -7,9 +7,10 @@ package backlogfx.kanban;
 import backlog4j.Issue;
 import backlogfx.BacklogFxModule;
 import com.google.inject.Guice;
-import java.util.List;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
+
+import java.util.List;
 
 /**
  * @author eguchi

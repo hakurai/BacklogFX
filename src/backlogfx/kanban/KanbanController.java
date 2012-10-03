@@ -7,14 +7,13 @@ package backlogfx.kanban;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.scene.Parent;
-
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.Region;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * FXML Controller class
@@ -31,7 +30,7 @@ public class KanbanController implements Initializable {
     private Region veil;
     @FXML
     private ProgressIndicator progress;
-    
+
     @FXML
     private Parent todoColumn;
     @FXML
@@ -54,7 +53,7 @@ public class KanbanController implements Initializable {
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {      
+    public void initialize(URL url, ResourceBundle rb) {
         kanbanBody.getStylesheets().add(getClass().getResource("kanban.css").toExternalForm());
         todoColumn.getStyleClass().add("todoColumn");
         inProgressColumn.getStyleClass().add("inProgressColumn");
@@ -67,13 +66,13 @@ public class KanbanController implements Initializable {
         this.model = model;
         todoColumnController.setColumnName("未対応");
         todoColumnController.setIssueList(model.getTodoIssues());
-        
+
         inProgressColumnController.setColumnName("処理中");
         inProgressColumnController.setIssueList(model.getInProgressIssues());
-        
+
         resolvedColumnController.setColumnName("処理済み");
         resolvedColumnController.setIssueList(model.getResolvedIssues());
-        
+
         closedColumnController.setColumnName("完了");
         closedColumnController.setIssueList(model.getClosedIssues());
 
@@ -81,9 +80,9 @@ public class KanbanController implements Initializable {
         veil.visibleProperty().bind(model.runningProperty());
         progress.visibleProperty().bind(model.runningProperty());
         progress.progressProperty().bind(model.progressProperty());
-        
+
         model.init();
-        
+
     }
 
     @FXML

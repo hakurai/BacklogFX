@@ -27,13 +27,9 @@ public class BacklogFxContextProvider implements Provider<BacklogFxContext> {
             context.setUser(user);
 
 
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-
 
 
     }
