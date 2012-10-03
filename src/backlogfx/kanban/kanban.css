@@ -1,7 +1,15 @@
-/*
- * Empty Stylesheet file.
-*/
+.todoColumn .issueCell {
+    -fx-background-color: #FFCCCC;
+}
 
-.mainFxmlClass {
+.inProgressColumn .issueCell {
+    -fx-background-color: #D3E0EF;
+}
 
+.resolvedColumn .issueCell {
+    -fx-background-color: #ACD9D3;
+}
+
+.closedColumn .issueCell {
+    -fx-background-color: #C2D3A3;
 }

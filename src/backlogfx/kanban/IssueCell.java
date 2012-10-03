@@ -1,8 +1,10 @@
 package backlogfx.kanban;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 
 /**
  * @author eguchi
@@ -19,8 +21,10 @@ public class IssueCell extends BorderPane{
         setMaxHeight(USE_PREF_SIZE);
 
         setCenter(summary);
+
+        VBox.setMargin(this,new Insets(3));
+        setPadding(new Insets(5));
         
-        getStylesheets().add("IssueCell.css");
         getStyleClass().add("issueCell");
     }
 
