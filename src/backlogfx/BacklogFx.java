@@ -4,20 +4,17 @@
  */
 package backlogfx;
 
-import com.google.inject.Guice;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * @author eguchi
  */
-public class BacklogFX extends Application {
+public class BacklogFx extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {

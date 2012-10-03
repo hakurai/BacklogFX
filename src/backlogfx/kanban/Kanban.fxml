@@ -8,23 +8,29 @@
 
 <BorderPane id="BorderPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns:fx="http://javafx.com/fxml" fx:controller="backlogfx.kanban.KanbanController">
   <center>
-    <ScrollPane fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vbarPolicy="ALWAYS">
-      <content>
-        <HBox>
-          <children>
-            <fx:include fx:id="todoColumn" source="KanbanColumn.fxml" HBox.hgrow="ALWAYS" />
-            <fx:include fx:id="inProgressColumn" source="KanbanColumn.fxml" HBox.hgrow="ALWAYS" />
-            <fx:include fx:id="resolvedColumn" source="KanbanColumn.fxml" HBox.hgrow="ALWAYS" />
-            <fx:include fx:id="closedColumn" source="KanbanColumn.fxml" HBox.hgrow="ALWAYS" />
-          </children>
-        </HBox>
-      </content>
-    </ScrollPane>
+    <StackPane prefHeight="150.0" prefWidth="200.0">
+      <children>
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vbarPolicy="ALWAYS">
+          <content>
+            <HBox>
+              <children>
+                <fx:include fx:id="todoColumn" source="KanbanColumn.fxml" HBox.hgrow="ALWAYS" />
+                <fx:include fx:id="inProgressColumn" source="KanbanColumn.fxml" HBox.hgrow="ALWAYS" />
+                <fx:include fx:id="resolvedColumn" source="KanbanColumn.fxml" HBox.hgrow="ALWAYS" />
+                <fx:include fx:id="closedColumn" source="KanbanColumn.fxml" HBox.hgrow="ALWAYS" />
+              </children>
+            </HBox>
+          </content>
+        </ScrollPane>
+        <Region fx:id="veil" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0, 0, 0, 0.4)&#10;" />
+        <ProgressIndicator fx:id="progress" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="150.0" prefWidth="150.0" progress="0.0" />
+      </children>
+    </StackPane>
   </center>
   <top>
     <ToolBar>
       <items>
-        <Button mnemonicParsing="false" onAction="#loadIssue" text="Button" />
+        <Button fx:id="refreshButton" mnemonicParsing="false" onAction="#loadIssue" text="Refresh" />
       </items>
     </ToolBar>
   </top>

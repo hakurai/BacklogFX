@@ -12,6 +12,8 @@ import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
 
 import java.util.List;
+import javafx.beans.property.ReadOnlyBooleanProperty;
+import javafx.beans.property.ReadOnlyDoubleProperty;
 
 /**
  * @author eguchi
@@ -25,27 +27,6 @@ public class KanbanModel {
     private ObservableList<Issue> closedIssues = FXCollections.observableArrayList();
 
     public KanbanModel() {
-    }
-
-    public ObservableList<Issue> getTodoIssues() {
-        return todoIssues;
-    }
-
-    public ObservableList<Issue> getInProgressIssues() {
-        return inProgressIssues;
-    }
-
-    public ObservableList<Issue> getResolvedIssues() {
-        return resolvedIssues;
-    }
-
-    public ObservableList<Issue> getClosedIssues() {
-        return closedIssues;
-    }
-
-    public void loadIssue() {
-
-        getIssueService.start();
         getIssueService.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
             @Override
             public void handle(WorkerStateEvent workerStateEvent) {
@@ -75,6 +56,39 @@ public class KanbanModel {
 
             }
         });
+    }
+
+    public void init() {
+        getIssueService.start();
+    }
+
+    public ObservableList<Issue> getTodoIssues() {
+        return todoIssues;
+    }
+
+    public ObservableList<Issue> getInProgressIssues() {
+        return inProgressIssues;
+    }
+
+    public ObservableList<Issue> getResolvedIssues() {
+        return resolvedIssues;
+    }
+
+    public ObservableList<Issue> getClosedIssues() {
+        return closedIssues;
+    }
+
+    public final ReadOnlyDoubleProperty progressProperty() {
+        return getIssueService.progressProperty();
+    }
+
+    public final ReadOnlyBooleanProperty runningProperty() {
+        return getIssueService.runningProperty();
+    }
+
+    public void loadIssue() {
+        getIssueService.restart();
+
 
     }
 }

@@ -10,3 +10,5 @@ BacklogFX.iml
 dist/
 nbproject/private/
 nbproject/genfiles.properties
+BacklogFX.ipr
+BacklogFX.iws
