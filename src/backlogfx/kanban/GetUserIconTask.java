@@ -14,7 +14,6 @@ import javafx.scene.image.Image;
 import java.io.ByteArrayInputStream;
 
 /**
- *
  * @author eguchi
  */
 public class GetUserIconTask extends Task<Image> {
@@ -36,5 +35,5 @@ public class GetUserIconTask extends Task<Image> {
 
         return new Image(new ByteArrayInputStream(userIcon.getData()));
     }
-    
+
 }
