@@ -13,3 +13,13 @@
 .closedColumn .issueCell {
     -fx-background-color: #C2D3A3;
 }
+
+.issueCell {
+    -fx-cursor: hand;
+}
+
+.issueCell .issueType {
+    -fx-padding: 2 3;
+    -fx-text-fill: white;
+    -fx-font-size: 90%;
+}

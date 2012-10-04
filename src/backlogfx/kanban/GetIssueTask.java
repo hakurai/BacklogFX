@@ -23,7 +23,6 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class GetIssueTask extends Task<List<Issue>> {
 
-
     @Inject
     private BacklogFxContext context;
 

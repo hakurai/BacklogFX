@@ -23,19 +23,14 @@ import java.util.List;
 public class KanbanModel {
 
     private GetIssueService getIssueService = new GetIssueService();
-    private ObservableList<Issue> todoIssues = FXCollections.observableArrayList();
-    private ObservableList<Issue> inProgressIssues = FXCollections.observableArrayList();
-    private ObservableList<Issue> resolvedIssues = FXCollections.observableArrayList();
-    private ObservableList<Issue> closedIssues = FXCollections.observableArrayList();
+    private final ObservableList<Issue> todoIssues = FXCollections.observableArrayList();
+    private final ObservableList<Issue> inProgressIssues = FXCollections.observableArrayList();
+    private final ObservableList<Issue> resolvedIssues = FXCollections.observableArrayList();
+    private final ObservableList<Issue> closedIssues = FXCollections.observableArrayList();
 
     private ReadOnlyObjectProperty<Issue> selectedIssue = new SimpleObjectProperty<>();
 
     public KanbanModel() {
-        todoIssues.clear();
-        inProgressIssues.clear();
-        resolvedIssues.clear();
-        closedIssues.clear();
-
         getIssueService.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
             @Override
             public void handle(WorkerStateEvent workerStateEvent) {
@@ -95,9 +90,12 @@ public class KanbanModel {
         return getIssueService.runningProperty();
     }
 
-    public void loadIssue() {
+    public void refresh() {
+        todoIssues.clear();
+        inProgressIssues.clear();
+        resolvedIssues.clear();
+        closedIssues.clear();
+
         getIssueService.restart();
-
-
     }
 }

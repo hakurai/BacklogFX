@@ -4,13 +4,20 @@
  */
 package backlogfx.kanban;
 
+import backlog4j.Issue;
+import backlogfx.MainViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,6 +28,8 @@ import java.util.ResourceBundle;
  * @author eguchi
  */
 public class KanbanController implements Initializable {
+
+    private MainViewController mainViewController;
 
     @FXML
     private Parent kanbanBody;
@@ -59,6 +68,11 @@ public class KanbanController implements Initializable {
         inProgressColumn.getStyleClass().add("inProgressColumn");
         resolvedColumn.getStyleClass().add("resolvedColumn");
         closedColumn.getStyleClass().add("closedColumn");
+
+        todoColumnController.setKanbanController(this);
+        inProgressColumnController.setKanbanController(this);
+        resolvedColumnController.setKanbanController(this);
+        closedColumnController.setKanbanController(this);
     }
 
     public void setModel(KanbanModel model) {
@@ -85,7 +99,20 @@ public class KanbanController implements Initializable {
     }
 
     @FXML
-    protected void loadIssue(ActionEvent event) {
-        model.loadIssue();
+    public void refresh(ActionEvent event) {
+        model.refresh();
+    }
+
+    public void showIssue(Issue issue) {
+        final Stage stage = new Stage();
+        Label desc = new Label(issue.getDescription());
+        BorderPane borderPane = new BorderPane();
+        borderPane.setCenter(desc);
+        Scene scene = new Scene(borderPane, 200, 200, Color.WHITESMOKE);
+
+
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.show();
     }
 }

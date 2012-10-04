@@ -23,6 +23,7 @@ public class BacklogFx extends Application {
         Scene scene = new Scene(root);
 
         stage.setScene(scene);
+        stage.setTitle("Backlog Fx");
         stage.show();
     }
 
