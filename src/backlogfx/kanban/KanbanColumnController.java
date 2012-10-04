@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package backlogfx.kanban;
 
 import backlog4j.Issue;
@@ -15,7 +11,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.WeakHashMap;
@@ -33,7 +28,7 @@ public class KanbanColumnController implements Initializable {
     @FXML
     private Label columnName;
     private ObservableList<Issue> issueList;
-    private Map<Issue,IssueCell> cellMap = new WeakHashMap<>();
+    private Map<Issue, IssueCell> cellMap = new WeakHashMap<>();
 
     /**
      * Initializes the controller class.
@@ -91,12 +86,12 @@ public class KanbanColumnController implements Initializable {
             }
         });
         body.getChildren().add(issueCell);
-        
+
         cellMap.put(issue, issueCell);
     }
 
     private void removeIssue(Issue issue) {
-        
+
         body.getChildren().remove(cellMap.get(issue));
 
 

@@ -34,7 +34,6 @@ public class GetIssueTask extends Task<List<Issue>> {
         updateProgress(0, 100);
 
         BacklogClient client = context.getClient();
-        User user = context.getUser();
 
         List<Project> projects = client.getProjects().execute();
         final int projectCount = projects.size();

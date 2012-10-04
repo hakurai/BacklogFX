@@ -2,13 +2,14 @@
 
 <?import java.lang.*?>
 <?import java.util.*?>
+<?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 
 <BorderPane id="BorderPane" fx:id="kanbanBody" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns:fx="http://javafx.com/fxml" fx:controller="backlogfx.kanban.KanbanController">
   <center>
-    <StackPane prefHeight="150.0" prefWidth="200.0">
+    <StackPane prefHeight="150.0" prefWidth="1024.0">
       <children>
         <ScrollPane fitToWidth="true" hbarPolicy="NEVER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vbarPolicy="ALWAYS">
           <content>
@@ -31,6 +32,7 @@
     <ToolBar>
       <items>
         <Button fx:id="refreshButton" mnemonicParsing="false" onAction="#refresh" text="Refresh" />
+        <ChoiceBox fx:id="selectUser"></ChoiceBox>
       </items>
     </ToolBar>
   </top>

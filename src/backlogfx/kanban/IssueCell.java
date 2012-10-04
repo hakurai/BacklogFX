@@ -1,6 +1,5 @@
 package backlogfx.kanban;
 
-import backlog4j.Category;
 import backlog4j.Issue;
 import backlog4j.IssueType;
 import javafx.geometry.Insets;
@@ -14,13 +13,10 @@ import javafx.scene.layout.VBox;
  */
 public class IssueCell extends BorderPane {
 
-    private Issue issue;
     private Label issueTypeLabel;
     private Label summaryLabel;
 
     public IssueCell(Issue issue) {
-        this.issue = issue;
-
 
         setCenter(getSummaryLabel(issue.getSummary()));
         setLeft(getIssueTypeLabel(issue.getIssueType()));
@@ -32,7 +28,7 @@ public class IssueCell extends BorderPane {
 
     private Label getSummaryLabel(String summary) {
         if (summaryLabel == null) {
-            summaryLabel = new Label(issue.getSummary());
+            summaryLabel = new Label(summary);
             summaryLabel.setWrapText(true);
 
             setAlignment(summaryLabel, Pos.TOP_LEFT);

@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.BorderPane;
@@ -39,6 +40,8 @@ public class KanbanController implements Initializable {
     private Region veil;
     @FXML
     private ProgressIndicator progress;
+    @FXML
+    private ChoiceBox<String> selectUser;
 
     @FXML
     private Parent todoColumn;
