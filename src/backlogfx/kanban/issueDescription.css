@@ -1,0 +1,10 @@
+.issueContent {
+    -fx-background-color: #F9F8E3;
+}
+
+.black-separator {
+}
+
+#summary {
+    -fx-font-size: 110%;
+}

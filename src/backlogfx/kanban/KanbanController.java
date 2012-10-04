@@ -8,18 +8,17 @@ import backlog4j.Issue;
 import backlogfx.MainViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -31,7 +30,6 @@ import java.util.ResourceBundle;
 public class KanbanController implements Initializable {
 
     private MainViewController mainViewController;
-
     @FXML
     private Parent kanbanBody;
     @FXML
@@ -42,7 +40,6 @@ public class KanbanController implements Initializable {
     private ProgressIndicator progress;
     @FXML
     private ChoiceBox<String> selectUser;
-
     @FXML
     private Parent todoColumn;
     @FXML
@@ -107,15 +104,23 @@ public class KanbanController implements Initializable {
     }
 
     public void showIssue(Issue issue) {
-        final Stage stage = new Stage();
-        Label desc = new Label(issue.getDescription());
-        BorderPane borderPane = new BorderPane();
-        borderPane.setCenter(desc);
-        Scene scene = new Scene(borderPane, 200, 200, Color.WHITESMOKE);
+        try {
+            FXMLLoader kanbanLoader = new FXMLLoader(getClass().getResource("IssueDescription.fxml"));
+            Parent parent = (Parent) kanbanLoader.load();
+            IssueDescriptionController controller = (IssueDescriptionController) kanbanLoader.getController();
 
+            parent.getStylesheets().add(getClass().getResource("issueDescription.css").toExternalForm());
 
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.show();
+            final Stage stage = new Stage();
+            controller.loadIsseu(issue);
+            Scene scene = new Scene(parent);
+
+            stage.setScene(scene);
+            stage.centerOnScreen();
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+
     }
 }
