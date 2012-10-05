@@ -105,9 +105,9 @@ public class KanbanController implements Initializable {
 
     public void showIssue(Issue issue) {
         try {
-            FXMLLoader kanbanLoader = new FXMLLoader(getClass().getResource("IssueDescription.fxml"));
+            FXMLLoader kanbanLoader = new FXMLLoader(getClass().getResource("IssueDetail.fxml"));
             Parent parent = (Parent) kanbanLoader.load();
-            IssueDescriptionController controller = (IssueDescriptionController) kanbanLoader.getController();
+            IssueDetailController controller = (IssueDetailController) kanbanLoader.getController();
 
             parent.getStylesheets().add(getClass().getResource("issueDescription.css").toExternalForm());
 
@@ -115,6 +115,7 @@ public class KanbanController implements Initializable {
             controller.loadIsseu(issue);
             Scene scene = new Scene(parent);
 
+            stage.setTitle(issue.getKey() + " " + issue.getSummary());
             stage.setScene(scene);
             stage.centerOnScreen();
             stage.show();

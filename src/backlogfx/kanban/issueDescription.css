@@ -8,3 +8,12 @@
 #summary {
     -fx-font-size: 110%;
 }
+
+.commentHeader {
+    -fx-background-color: #81B419;
+}
+
+.commentHeader .label{
+    -fx-font-size: 120%;
+    -fx-text-fill: white;
+}

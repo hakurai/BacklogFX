@@ -18,6 +18,10 @@
     -fx-cursor: hand;
 }
 
+.issueCell:hover {
+    -fx-background-color: #FAFAD2 !important;
+}
+
 .issueCell .issueType {
     -fx-padding: 2 3;
     -fx-text-fill: white;

@@ -1,6 +1,6 @@
 package backlogfx.kanban;
 
-import backlog4j.Issue;
+import backlog4j.Comment;
 import backlogfx.BacklogFxContext;
 import backlogfx.BacklogFxModule;
 import com.google.inject.Guice;
@@ -11,24 +11,23 @@ import javafx.scene.image.Image;
 /**
  * @author eguchi
  */
-public class IssueDescriptionModel {
+public class CommentPaneModel {
 
     @Inject
     private BacklogFxContext context;
 
-    private Issue issue;
+    private Comment comment;
 
-    public IssueDescriptionModel() {
+    public CommentPaneModel() {
     }
 
-    public void setIssue(Issue issue) {
-        this.issue = issue;
+    public void setComment(Comment comment) {
+        this.comment = comment;
     }
 
     public ReadOnlyObjectProperty<Image> getCreatedUserIcon() {
-        return getUserIcon(issue.getCreatedUser().getId());
+        return getUserIcon(comment.getCreatedUser().getId());
     }
-
 
     public ReadOnlyObjectProperty<Image> getUserIcon(Integer id) {
         GetUserIconTask task = Guice.createInjector(new BacklogFxModule()).getInstance(GetUserIconTask.class);
@@ -38,5 +37,4 @@ public class IssueDescriptionModel {
 
         return task.valueProperty();
     }
-
 }

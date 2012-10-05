@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<StackPane id="StackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml" fx:controller="backlogfx.kanban.IssueDetailController">
+  <children>
+    <ScrollPane fx:id="scrollPane" fitToWidth="true" prefHeight="-1.0" prefWidth="-1.0">
+      <content>
+        <VBox fx:id="scrollPaneContent" maxHeight="-Infinity" prefHeight="-1.0" prefWidth="100.0">
+          <children>
+            <fx:include fx:id="issueDescription" source="IssueDescription.fxml" />
+            <AnchorPane cache="true" maxHeight="-Infinity" prefHeight="-1.0" prefWidth="200.0" styleClass="commentHeader">
+              <children>
+                <Label layoutX="14.0" layoutY="3.0" text="0 コメント" />
+              </children>
+              <VBox.margin>
+                <Insets bottom="5.0" top="5.0" />
+              </VBox.margin>
+            </AnchorPane>
+          </children>
+        </VBox>
+      </content>
+    </ScrollPane>
+  </children>
+</StackPane>

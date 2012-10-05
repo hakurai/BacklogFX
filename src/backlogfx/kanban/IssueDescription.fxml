@@ -8,132 +8,128 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 
-<StackPane id="StackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="-1.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml" fx:controller="backlogfx.kanban.IssueDescriptionController">
+<VBox cache="true" prefHeight="200.0" prefWidth="600.0" styleClass="issueContent" xmlns:fx="http://javafx.com/fxml" fx:controller="backlogfx.kanban.IssueDescriptionController">
   <children>
-    <VBox prefHeight="200.0" prefWidth="100.0" styleClass="issueContent" StackPane.margin="$x3">
+    <HBox prefHeight="-1.0" prefWidth="200.0">
       <children>
-        <HBox prefHeight="-1.0" prefWidth="200.0">
-          <children>
-            <Label fx:id="issueType" maxHeight="-1.0" maxWidth="-1.0" text="Label" HBox.hgrow="NEVER" />
-            <Label fx:id="key" maxWidth="1.7976931348623157E308" text="Label" HBox.hgrow="ALWAYS">
-              <HBox.margin>
-                <Insets left="5.0" />
-              </HBox.margin>
-            </Label>
-            <Separator orientation="VERTICAL" prefHeight="-1.0">
-              <HBox.margin>
-                <Insets left="5.0" right="5.0" fx:id="x1" />
-              </HBox.margin>
-            </Separator>
-            <Label fx:id="createdOn" text="Label" />
-            <Separator orientation="VERTICAL" prefHeight="-1.0" HBox.margin="$x1" />
-            <Label fx:id="startDate" text="Label" />
-            <Separator orientation="VERTICAL" prefHeight="-1.0" HBox.margin="$x1" />
-            <Label fx:id="dueDate" text="Label">
-              <HBox.margin>
-                <Insets right="5.0" fx:id="x4" />
-              </HBox.margin>
-            </Label>
-          </children>
-          <VBox.margin>
-            <Insets left="10.0" right="10.0" top="10.0" />
-          </VBox.margin>
-        </HBox>
-        <Separator prefWidth="200.0" styleClass="black-separator">
-          <VBox.margin>
-            <Insets left="10.0" right="10.0" top="5.0" fx:id="x2" />
-          </VBox.margin>
-        </Separator>
-        <Label fx:id="summary" text="Label" VBox.vgrow="NEVER">
-          <VBox.margin>
-            <Insets left="15.0" right="10.0" top="5.0" />
-          </VBox.margin>
+        <Label fx:id="issueType" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Label" HBox.hgrow="NEVER" />
+        <Label fx:id="key" maxWidth="1.7976931348623157E308" text="Label" HBox.hgrow="ALWAYS">
+          <HBox.margin>
+            <Insets left="5.0" />
+          </HBox.margin>
         </Label>
-        <Separator prefWidth="200.0" styleClass="black-separator" VBox.margin="$x2" />
-        <GridPane hgap="10.0" maxHeight="-Infinity">
-          <children>
-            <Label text="種別" GridPane.columnIndex="0" GridPane.rowIndex="0">
-              <GridPane.margin>
-                <Insets fx:id="x3" />
-              </GridPane.margin>
-            </Label>
-            <Separator prefWidth="-1.0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.margin="$x3" GridPane.rowIndex="1" />
-            <Label fx:id="issueTypeValue" text="" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-            <Separator prefWidth="200.0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.margin="$x3" GridPane.rowIndex="3" />
-            <Separator prefWidth="200.0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.margin="$x3" GridPane.rowIndex="5" />
-            <Separator prefWidth="200.0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.margin="$x3" GridPane.rowIndex="7" />
-            <Separator prefWidth="200.0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.margin="$x3" GridPane.rowIndex="9" />
-            <Separator prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.margin="$x3" GridPane.rowIndex="1" />
-            <Separator prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.margin="$x3" GridPane.rowIndex="3" />
-            <Separator prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.margin="$x3" GridPane.rowIndex="5" />
-            <Separator prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.margin="$x3" GridPane.rowIndex="7" />
-            <Separator prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.margin="$x3" GridPane.rowIndex="9" />
-            <Label text="カテゴリー" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-            <Label fx:id="categoryValue" text="" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label text="発生バージョン" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-            <Label fx:id="versionValue" text="" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Label text="マイルストーン" GridPane.columnIndex="0" GridPane.rowIndex="6" />
-            <Label fx:id="milestoneValue" text="" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <Label text="予定時間" GridPane.columnIndex="0" GridPane.rowIndex="8" />
-            <Label fx:id="estimatedOursValue" text="" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-            <Label text="優先度" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-            <Label fx:id="priorityValue" text="" GridPane.columnIndex="3" GridPane.rowIndex="0" />
-            <Label text="完了理由" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Label fx:id="resolutionValue" text="" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <Label text="状態" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Label fx:id="statusValue" text="" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <Label text="担当者" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-            <Label fx:id="assignerValue" text="" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-            <Label text="実績時間" GridPane.columnIndex="2" GridPane.rowIndex="8" />
-            <Label fx:id="actualHoursValue" text="" GridPane.columnIndex="3" GridPane.rowIndex="8" />
-          </children>
-          <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="-1.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          </columnConstraints>
-          <rowConstraints>
-            <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="-1.0" vgrow="SOMETIMES" />
-            <RowConstraints fillHeight="false" maxHeight="4.0" prefHeight="4.0" vgrow="SOMETIMES" />
-            <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="-1.0" vgrow="SOMETIMES" />
-            <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="-1.0" prefHeight="-1.0" vgrow="SOMETIMES" />
-            <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="-1.0" vgrow="SOMETIMES" />
-            <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="-1.0" prefHeight="-1.0" vgrow="SOMETIMES" />
-            <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="-1.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="-Infinity" minHeight="-1.0" prefHeight="-1.0" vgrow="SOMETIMES" />
-            <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="-1.0" vgrow="SOMETIMES" />
-            <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="-1.0" prefHeight="-1.0" vgrow="SOMETIMES" />
-          </rowConstraints>
-          <VBox.margin>
-            <Insets left="20.0" right="20.0" top="10.0" />
-          </VBox.margin>
-        </GridPane>
-        <Separator prefWidth="200.0" styleClass="black-separator">
-          <VBox.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="15.0" />
-          </VBox.margin>
+        <Separator orientation="VERTICAL" prefHeight="-1.0">
+          <HBox.margin>
+            <Insets left="5.0" right="5.0" fx:id="x1" />
+          </HBox.margin>
         </Separator>
-        <HBox prefHeight="-1.0" prefWidth="200.0">
-          <children>
-            <Label text="詳細">
-              <HBox.margin>
-                <Insets right="5.0" fx:id="x4" />
-              </HBox.margin>
-            </Label>
-            <ImageView fx:id="createdUserIcon" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" HBox.margin="$x4" />
-            <Label fx:id="createdUserName" maxHeight="1.7976931348623157E308" text="" />
-          </children>
-          <VBox.margin>
-            <Insets left="10.0" right="10.0" />
-          </VBox.margin>
-        </HBox>
-        <VBox fx:id="descriptionBody" maxHeight="-Infinity" prefHeight="-1.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
-          <VBox.margin>
-            <Insets bottom="10.0" left="20.0" right="10.0" />
-          </VBox.margin>
-        </VBox>
+        <Label fx:id="createdOn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Label" />
+        <Separator orientation="VERTICAL" prefHeight="-1.0" HBox.margin="$x1" />
+        <Label fx:id="startDate" text="Label" />
+        <Separator orientation="VERTICAL" prefHeight="-1.0" HBox.margin="$x1" />
+        <Label fx:id="dueDate" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Label">
+          <HBox.margin>
+            <Insets right="5.0" fx:id="x4" />
+          </HBox.margin>
+        </Label>
       </children>
+      <VBox.margin>
+        <Insets left="10.0" right="10.0" top="10.0" />
+      </VBox.margin>
+    </HBox>
+    <Separator prefWidth="200.0" styleClass="black-separator">
+      <VBox.margin>
+        <Insets left="10.0" right="10.0" top="5.0" fx:id="x2" />
+      </VBox.margin>
+    </Separator>
+    <Label fx:id="summary" text="Label" VBox.vgrow="NEVER">
+      <VBox.margin>
+        <Insets left="15.0" right="10.0" top="5.0" />
+      </VBox.margin>
+    </Label>
+    <Separator prefWidth="200.0" styleClass="black-separator" VBox.margin="$x2" />
+    <GridPane cache="false" hgap="10.0" maxHeight="-Infinity">
+      <children>
+        <Label text="種別" GridPane.columnIndex="0" GridPane.rowIndex="0">
+          <GridPane.margin>
+            <Insets fx:id="x3" />
+          </GridPane.margin>
+        </Label>
+        <Separator prefWidth="-1.0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.margin="$x3" GridPane.rowIndex="1" />
+        <Label fx:id="issueTypeValue" text="" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <Separator prefWidth="200.0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.margin="$x3" GridPane.rowIndex="3" />
+        <Separator prefWidth="200.0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.margin="$x3" GridPane.rowIndex="5" />
+        <Separator prefWidth="200.0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.margin="$x3" GridPane.rowIndex="7" />
+        <Separator prefWidth="200.0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.margin="$x3" GridPane.rowIndex="9" />
+        <Separator prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.margin="$x3" GridPane.rowIndex="1" />
+        <Separator prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.margin="$x3" GridPane.rowIndex="3" />
+        <Separator prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.margin="$x3" GridPane.rowIndex="5" />
+        <Separator prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.margin="$x3" GridPane.rowIndex="7" />
+        <Separator prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.margin="$x3" GridPane.rowIndex="9" />
+        <Label text="カテゴリー" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <Label fx:id="categoryValue" text="" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Label text="発生バージョン" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+        <Label fx:id="versionValue" text="" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        <Label text="マイルストーン" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+        <Label fx:id="milestoneValue" text="" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+        <Label text="予定時間" GridPane.columnIndex="0" GridPane.rowIndex="8" />
+        <Label fx:id="estimatedOursValue" text="" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+        <Label text="優先度" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+        <Label fx:id="priorityValue" text="" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+        <Label text="完了理由" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+        <Label fx:id="resolutionValue" text="" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+        <Label text="状態" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+        <Label fx:id="statusValue" text="" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+        <Label text="担当者" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+        <Label fx:id="assignerValue" text="" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+        <Label text="実績時間" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+        <Label fx:id="actualHoursValue" text="" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+      </children>
+      <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="-1.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      </columnConstraints>
+      <rowConstraints>
+        <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="-1.0" vgrow="SOMETIMES" />
+        <RowConstraints fillHeight="false" maxHeight="4.0" prefHeight="4.0" vgrow="SOMETIMES" />
+        <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="-1.0" vgrow="SOMETIMES" />
+        <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="-1.0" prefHeight="-1.0" vgrow="SOMETIMES" />
+        <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="-1.0" vgrow="SOMETIMES" />
+        <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="-1.0" prefHeight="-1.0" vgrow="SOMETIMES" />
+        <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="-1.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="-Infinity" minHeight="-1.0" prefHeight="-1.0" vgrow="SOMETIMES" />
+        <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="-1.0" vgrow="SOMETIMES" />
+        <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="-1.0" prefHeight="-1.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+      <VBox.margin>
+        <Insets left="20.0" right="20.0" top="10.0" />
+      </VBox.margin>
+    </GridPane>
+    <Separator prefWidth="200.0" styleClass="black-separator">
+      <VBox.margin>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="15.0" />
+      </VBox.margin>
+    </Separator>
+    <HBox prefHeight="-1.0" prefWidth="200.0">
+      <children>
+        <Label text="詳細">
+          <HBox.margin>
+            <Insets right="5.0" fx:id="x4" />
+          </HBox.margin>
+        </Label>
+        <ImageView fx:id="createdUserIcon" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" HBox.margin="$x4" />
+        <Label fx:id="createdUserName" maxHeight="1.7976931348623157E308" text="" />
+      </children>
+      <VBox.margin>
+        <Insets left="10.0" right="10.0" />
+      </VBox.margin>
+    </HBox>
+    <VBox fx:id="descriptionBody" maxHeight="-Infinity" prefHeight="-1.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+      <VBox.margin>
+        <Insets bottom="10.0" left="20.0" right="10.0" />
+      </VBox.margin>
     </VBox>
   </children>
-</StackPane>
+</VBox>

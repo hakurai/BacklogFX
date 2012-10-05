@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="-1.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml" fx:controller="backlogfx.kanban.CommentPaneController">
+  <children>
+    <HBox prefHeight="-1.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <Label fx:id="createdOn" maxHeight="1.7976931348623157E308" text="Label">
+          <HBox.margin>
+            <Insets left="5.0" right="5.0" />
+          </HBox.margin>
+        </Label>
+        <ImageView fx:id="createdUserIcon" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+          <HBox.margin>
+            <Insets bottom="5.0" top="5.0" />
+          </HBox.margin>
+        </ImageView>
+        <Label fx:id="createdUserValue" maxHeight="1.7976931348623157E308" text="Label">
+          <HBox.margin>
+            <Insets left="5.0" />
+          </HBox.margin>
+        </Label>
+      </children>
+    </HBox>
+    <VBox fx:id="commnetBody" layoutX="0.0" layoutY="42.0" prefHeight="-1.0" prefWidth="600.0" />
+  </children>
+</AnchorPane>
