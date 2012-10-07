@@ -7,9 +7,9 @@ package backlogfx.kanban;
 import backlog4j.Issue;
 import backlog4j.Resolution;
 import backlog4j.User;
-import backlogfx.BacklogFxModule;
-import backlogfx.StringFormatUtil;
-import com.google.inject.Guice;
+import backlogfx.core.ModelFactory;
+import backlogfx.util.StringFormatUtil;
+import com.google.inject.Inject;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -30,6 +30,8 @@ import java.util.ResourceBundle;
  */
 public class IssueDescriptionController implements Initializable {
 
+    @Inject
+    private ModelFactory modelFactory;
     private IssueDescriptionModel model;
 
     @FXML
@@ -87,7 +89,7 @@ public class IssueDescriptionController implements Initializable {
 
     public void loadIsseu(Issue issue) {
 
-        model = Guice.createInjector(new BacklogFxModule()).getInstance(IssueDescriptionModel.class);
+        model = modelFactory.createModel(IssueDescriptionModel.class);
         model.setIssue(issue);
 
         createdUserIcon.imageProperty().bind(model.getCreatedUserIcon());

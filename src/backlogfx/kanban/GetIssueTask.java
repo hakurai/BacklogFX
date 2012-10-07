@@ -4,11 +4,12 @@
  */
 package backlogfx.kanban;
 
-import backlog4j.BacklogClient;
 import backlog4j.Issue;
 import backlog4j.Project;
 import backlog4j.User;
-import backlogfx.BacklogFxContext;
+import backlogfx.core.BacklogClientProvider;
+import backlogfx.core.BacklogTaskBase;
+import backlogfx.core.UserRepository;
 import com.google.inject.Inject;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
@@ -21,10 +22,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * @author eguchi
  */
-public class GetIssueTask extends Task<List<Issue>> {
+public class GetIssueTask extends BacklogTaskBase<List<Issue>> {
 
     @Inject
-    private BacklogFxContext context;
+    private BacklogClientProvider backlogClientProvider;
+    @Inject
+    private UserRepository userRepository;
 
     public GetIssueTask() {
     }
@@ -33,9 +36,7 @@ public class GetIssueTask extends Task<List<Issue>> {
     protected List<Issue> call() throws Exception {
         updateProgress(0, 100);
 
-        BacklogClient client = context.getClient();
-
-        List<Project> projects = client.getProjects().execute();
+        List<Project> projects = backlogClientProvider.get().getProjects().execute();
         final int projectCount = projects.size();
 
         final List<Issue> issueList = new ArrayList<>();
@@ -53,7 +54,7 @@ public class GetIssueTask extends Task<List<Issue>> {
                 }
             });
 
-            context.getThreadPool().execute(task);
+            getExecutorService().execute(task);
             taskList.add(task);
         }
 
@@ -79,11 +80,11 @@ public class GetIssueTask extends Task<List<Issue>> {
 
         @Override
         protected List<Issue> call() throws Exception {
-            BacklogClient client = context.getClient();
-            User user = context.getUser();
+
+            User user = userRepository.getLoginUser();
 
             List<Issue> issues =
-                    client.findIssue()
+                    backlogClientProvider.get().findIssue()
                             .setProjectId(project.getId())
                             .addAssignerId(user.getId())
                             .execute();

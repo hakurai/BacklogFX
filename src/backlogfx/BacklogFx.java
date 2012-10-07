@@ -17,6 +17,10 @@ import javafx.stage.Stage;
 public class BacklogFx extends Application {
 
     @Override
+    public void init() throws Exception {
+    }
+
+    @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("MainView.fxml"));
 

@@ -1,8 +1,7 @@
-package backlogfx;
+package backlogfx.core;
 
 import backlog4j.BacklogClient;
 import backlog4j.BacklogClientFactory;
-import backlog4j.User;
 import backlog4j.conf.BacklogConfigure;
 import backlog4j.conf.BacklogConfigureBuilder;
 import com.google.inject.Provider;
@@ -12,20 +11,16 @@ import java.io.IOException;
 /**
  * @author eguchi
  */
-public class BacklogFxContextProvider implements Provider<BacklogFxContext> {
+public class BacklogClientProvider implements Provider<BacklogClient> {
 
-    private final BacklogFxContext context = new BacklogFxContext();
+    private BacklogClient client;
 
-    public BacklogFxContextProvider() {
+    public BacklogClientProvider() {
         BacklogConfigure configure;
         try {
             configure = new BacklogConfigureBuilder().loadPropertyFile("user.properties").buildBacklogConfigure();
             BacklogClient client = new BacklogClientFactory(configure).newBacklogClient();
-            context.setClient(client);
-
-            User user = client.getUser().setUserId(configure.getUsername()).execute();
-            context.setUser(user);
-
+            this.client = client;
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -35,7 +30,7 @@ public class BacklogFxContextProvider implements Provider<BacklogFxContext> {
     }
 
     @Override
-    public synchronized BacklogFxContext get() {
-        return context;
+    public BacklogClient get() {
+        return client;
     }
 }

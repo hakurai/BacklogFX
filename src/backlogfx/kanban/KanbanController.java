@@ -6,9 +6,13 @@ package backlogfx.kanban;
 
 import backlog4j.Issue;
 import backlogfx.MainViewController;
+import backlogfx.core.BacklogFxModule;
+import backlogfx.core.InjectFXMLLoader;
+import backlogfx.core.ModelFactory;
+import com.google.inject.Inject;
+import com.google.inject.Provider;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -28,6 +32,8 @@ import java.util.ResourceBundle;
  * @author eguchi
  */
 public class KanbanController implements Initializable {
+
+    private ModelFactory modelFactory;
 
     private MainViewController mainViewController;
     @FXML
@@ -73,10 +79,7 @@ public class KanbanController implements Initializable {
         inProgressColumnController.setKanbanController(this);
         resolvedColumnController.setKanbanController(this);
         closedColumnController.setKanbanController(this);
-    }
 
-    public void setModel(KanbanModel model) {
-        this.model = model;
         todoColumnController.setColumnName("未対応");
         todoColumnController.setIssueList(model.getTodoIssues());
 
@@ -95,6 +98,13 @@ public class KanbanController implements Initializable {
         progress.progressProperty().bind(model.progressProperty());
 
         model.init();
+    }
+
+    @Inject
+    public void setModelFactory(Provider<ModelFactory> provider) {
+        this.modelFactory = provider.get();
+        this.model = modelFactory.createModel(KanbanModel.class);
+
 
     }
 
@@ -105,7 +115,7 @@ public class KanbanController implements Initializable {
 
     public void showIssue(Issue issue) {
         try {
-            FXMLLoader kanbanLoader = new FXMLLoader(getClass().getResource("IssueDetail.fxml"));
+            InjectFXMLLoader kanbanLoader = new InjectFXMLLoader(BacklogFxModule.getInstance(), getClass().getResource("IssueDetail.fxml"));
             Parent parent = (Parent) kanbanLoader.load();
             IssueDetailController controller = (IssueDetailController) kanbanLoader.getController();
 

@@ -1,9 +1,7 @@
 package backlogfx.kanban;
 
 import backlog4j.Comment;
-import backlogfx.BacklogFxContext;
-import backlogfx.BacklogFxModule;
-import com.google.inject.Guice;
+import backlogfx.core.TaskFactory;
 import com.google.inject.Inject;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.scene.image.Image;
@@ -14,8 +12,7 @@ import javafx.scene.image.Image;
 public class CommentPaneModel {
 
     @Inject
-    private BacklogFxContext context;
-
+    private TaskFactory taskFactory;
     private Comment comment;
 
     public CommentPaneModel() {
@@ -30,10 +27,10 @@ public class CommentPaneModel {
     }
 
     public ReadOnlyObjectProperty<Image> getUserIcon(Integer id) {
-        GetUserIconTask task = Guice.createInjector(new BacklogFxModule()).getInstance(GetUserIconTask.class);
+        GetUserIconTask task = taskFactory.createTask(GetUserIconTask.class);
         task.setUserId(id);
 
-        context.getThreadPool().execute(task);
+        task.execute();
 
         return task.valueProperty();
     }

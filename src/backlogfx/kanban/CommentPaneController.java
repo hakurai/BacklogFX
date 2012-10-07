@@ -5,9 +5,9 @@
 package backlogfx.kanban;
 
 import backlog4j.Comment;
-import backlogfx.BacklogFxModule;
-import backlogfx.StringFormatUtil;
-import com.google.inject.Guice;
+import backlogfx.core.ModelFactory;
+import backlogfx.util.StringFormatUtil;
+import com.google.inject.Inject;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -23,6 +23,10 @@ import java.util.ResourceBundle;
  * @author eguchi
  */
 public class CommentPaneController implements Initializable {
+
+    @Inject
+    private ModelFactory modelFactory;
+
     @FXML
     private Label createdOn;
     @FXML
@@ -42,7 +46,7 @@ public class CommentPaneController implements Initializable {
     }
 
     public void setCommnet(Comment commnet) {
-        model = Guice.createInjector(new BacklogFxModule()).getInstance(CommentPaneModel.class);
+        model = modelFactory.createModel(CommentPaneModel.class);
         model.setComment(commnet);
 
         createdUserIcon.imageProperty().bind(model.getCreatedUserIcon());

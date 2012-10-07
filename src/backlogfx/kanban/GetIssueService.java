@@ -5,8 +5,8 @@
 package backlogfx.kanban;
 
 import backlog4j.Issue;
-import backlogfx.BacklogFxModule;
-import com.google.inject.Guice;
+import backlogfx.core.TaskFactory;
+import com.google.inject.Inject;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 
@@ -17,9 +17,12 @@ import java.util.List;
  */
 public class GetIssueService extends Service<List<Issue>> {
 
+    @Inject
+    private TaskFactory taskFactory;
+
     @Override
     protected Task<List<Issue>> createTask() {
-        return Guice.createInjector(new BacklogFxModule()).getInstance(GetIssueTask.class);
+        return taskFactory.createTask(GetIssueTask.class);
     }
 
 }

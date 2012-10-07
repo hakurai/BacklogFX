@@ -6,7 +6,7 @@ package backlogfx.kanban;
 
 import backlog4j.Issue;
 import backlog4j.Status;
-import backlogfx.BacklogFxContext;
+import backlogfx.core.ServiceFactory;
 import com.google.inject.Inject;
 import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.beans.property.ReadOnlyDoubleProperty;
@@ -23,9 +23,9 @@ import java.util.List;
  */
 public class KanbanModel {
 
-    @Inject
-    private BacklogFxContext context;
-    private GetIssueService getIssueService = new GetIssueService();
+    private ServiceFactory serviceFactory;
+
+    private GetIssueService getIssueService;
     private final ObservableList<Issue> allIssues = FXCollections.observableArrayList();
     private final ObservableList<Issue> todoIssues = FXCollections.observableArrayList();
     private final ObservableList<Issue> inProgressIssues = FXCollections.observableArrayList();
@@ -33,20 +33,6 @@ public class KanbanModel {
     private final ObservableList<Issue> closedIssues = FXCollections.observableArrayList();
 
     public KanbanModel() {
-        getIssueService.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
-            @Override
-            public void handle(WorkerStateEvent workerStateEvent) {
-                List<Issue> issues = (List<Issue>) workerStateEvent.getSource().getValue();
-
-                for (Issue issue : issues) {
-                    if (allIssues.contains(issue)) {
-                        allIssues.remove(issue);
-                    }
-                    allIssues.add(issue);
-                }
-            }
-        });
-
         allIssues.addListener(new ListChangeListener<Issue>() {
             @Override
             public void onChanged(Change<? extends Issue> change) {
@@ -61,6 +47,26 @@ public class KanbanModel {
                             addIssue(issue);
                         }
                     }
+                }
+            }
+        });
+    }
+
+    @Inject
+    public void setServiceFactory(ServiceFactory serviceFactory) {
+        this.serviceFactory = serviceFactory;
+        getIssueService = serviceFactory.createService(GetIssueService.class);
+
+        getIssueService.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+            @Override
+            public void handle(WorkerStateEvent workerStateEvent) {
+                List<Issue> issues = (List<Issue>) workerStateEvent.getSource().getValue();
+
+                for (Issue issue : issues) {
+                    if (allIssues.contains(issue)) {
+                        allIssues.remove(issue);
+                    }
+                    allIssues.add(issue);
                 }
             }
         });

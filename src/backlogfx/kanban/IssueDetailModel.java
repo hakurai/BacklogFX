@@ -6,9 +6,7 @@ package backlogfx.kanban;
 
 import backlog4j.Comment;
 import backlog4j.Issue;
-import backlogfx.BacklogFxContext;
-import backlogfx.BacklogFxModule;
-import com.google.inject.Guice;
+import backlogfx.core.TaskFactory;
 import com.google.inject.Inject;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.collections.ObservableList;
@@ -20,7 +18,7 @@ import javafx.scene.image.Image;
 public class IssueDetailModel {
 
     @Inject
-    private BacklogFxContext context;
+    private TaskFactory taskFactory;
 
     private Issue issue;
 
@@ -32,19 +30,19 @@ public class IssueDetailModel {
     }
 
     public ReadOnlyObjectProperty<Image> getUserIcon(Integer id) {
-        GetUserIconTask task = Guice.createInjector(new BacklogFxModule()).getInstance(GetUserIconTask.class);
+        GetUserIconTask task = taskFactory.createTask(GetUserIconTask.class);
         task.setUserId(id);
 
-        context.getThreadPool().execute(task);
+        task.execute();
 
         return task.valueProperty();
     }
 
     public ReadOnlyObjectProperty<ObservableList<Comment>> getComments() {
-        GetCommentsTask task = Guice.createInjector(new BacklogFxModule()).getInstance(GetCommentsTask.class);
+        GetCommentsTask task = taskFactory.createTask(GetCommentsTask.class);
         task.setIssueId(issue.getId());
 
-        context.getThreadPool().execute(task);
+        task.execute();
 
         return task.valueProperty();
     }

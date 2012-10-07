@@ -4,10 +4,10 @@
  */
 package backlogfx;
 
+import backlogfx.core.BacklogFxModule;
+import backlogfx.core.InjectFXMLLoader;
 import backlogfx.kanban.KanbanController;
-import backlogfx.kanban.KanbanModel;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
@@ -33,11 +33,9 @@ public class MainViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            FXMLLoader kanbanLoader = new FXMLLoader(getClass().getResource("kanban/Kanban.fxml"));
+            InjectFXMLLoader kanbanLoader = new InjectFXMLLoader(BacklogFxModule.getInstance(), getClass().getResource("kanban/Kanban.fxml"));
             kanban = (Parent) kanbanLoader.load();
             kanbanController = (KanbanController) kanbanLoader.getController();
-
-            kanbanController.setModel(new KanbanModel());
 
 
         } catch (IOException ex) {

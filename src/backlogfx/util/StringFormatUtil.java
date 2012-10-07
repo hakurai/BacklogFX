@@ -1,4 +1,4 @@
-package backlogfx;
+package backlogfx.util;
 
 import backlog4j.Category;
 import backlog4j.Milestone;

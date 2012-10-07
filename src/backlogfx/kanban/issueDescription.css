@@ -13,7 +13,7 @@
     -fx-background-color: #81B419;
 }
 
-.commentHeader .label{
+.commentHeader .label {
     -fx-font-size: 120%;
     -fx-text-fill: white;
 }

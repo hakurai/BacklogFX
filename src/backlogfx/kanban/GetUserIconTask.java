@@ -6,9 +6,9 @@ package backlogfx.kanban;
 
 import backlog4j.BacklogClient;
 import backlog4j.UserIcon;
-import backlogfx.BacklogFxContext;
+import backlogfx.core.BacklogClientProvider;
+import backlogfx.core.BacklogTaskBase;
 import com.google.inject.Inject;
-import javafx.concurrent.Task;
 import javafx.scene.image.Image;
 
 import java.io.ByteArrayInputStream;
@@ -16,10 +16,10 @@ import java.io.ByteArrayInputStream;
 /**
  * @author eguchi
  */
-public class GetUserIconTask extends Task<Image> {
+public class GetUserIconTask extends BacklogTaskBase<Image> {
 
     @Inject
-    private BacklogFxContext context;
+    private BacklogClientProvider clientProvider;
 
     private Integer userId;
 
@@ -29,7 +29,7 @@ public class GetUserIconTask extends Task<Image> {
 
     @Override
     protected Image call() throws Exception {
-        BacklogClient client = context.getClient();
+        BacklogClient client = clientProvider.get();
 
         UserIcon userIcon = client.getUserIcon().setId(userId).execute();
 
